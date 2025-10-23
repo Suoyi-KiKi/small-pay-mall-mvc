@@ -11,6 +11,14 @@ weixin:
   config:
     originalid: gh_b565c73e3450
     token: b8b6
+    app-id: wx01254df0def446cf
+    app-secret: 453588981e0dc8110e10e5c9b81e3872
+    template_id: uFLQ4b2okrD4l1Af6BzQ1qhI8yuY4QVhTb-j3876GY8
+
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 16379
 
 
 #spring:
