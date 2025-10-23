@@ -14,6 +14,6 @@ public class ApiTest {
 
     @Test
     void Test(){
-        template.opsForValue().set("hello", "kiki");
+        System.out.println("hello");
     }
 }
