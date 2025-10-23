@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import com.alipay.api.AlipayClient;
 import com.kiki.domain.req.WeixinQrCodeReq;
 import com.kiki.domain.res.WeixinQrCodeRes;
 import com.kiki.domain.res.WeixinTemplateRes;
@@ -40,6 +41,8 @@ public class LoginServiceImpl implements ILoginService {
     
     @Resource
     RedisTemplate<String,String> redisTemplate;
+
+    
     
 
 
@@ -66,13 +69,14 @@ public class LoginServiceImpl implements ILoginService {
 
         //2 获取ticket
         WeixinQrCodeReq weixinQrCodeReq = WeixinQrCodeReq.builder()
-                                                            .expire_seconds(2592000)
-                                                            .action_name(WeixinQrCodeReq.ActionName.QR_SCENE.getCode())
-                                                            .action_info(WeixinQrCodeReq.ActionInfo.builder()
-                                                                                .scene(WeixinQrCodeReq.ActionInfo.Scene.builder()
-                                                                                            .scene_id(100601).build())
-                                                                                .build())
-                                                            .build();   
+                                                        .expire_seconds(2592000)
+                                                        .action_name(WeixinQrCodeReq.ActionName.QR_SCENE.getCode())
+                                                        .action_info(WeixinQrCodeReq.ActionInfo.builder()
+                                                                                            .scene(WeixinQrCodeReq.ActionInfo.Scene.builder()
+                                                                                                                                .scene_id(100601)
+                                                                                                                                .build())
+                                                                                            .build())
+                                                        .build();   
                                                 
         Call<WeixinQrCodeRes> weixinQrCodeCall = iweixinApiService.creatQrCode(token, weixinQrCodeReq);
 
